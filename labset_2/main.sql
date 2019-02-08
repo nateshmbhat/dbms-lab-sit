@@ -28,9 +28,15 @@ where order_date between to_date('jan-00' , 'mm-yy') and to_date('jan-06') ;
 
 -- ALL JOINS :  { 
 
+-- 1. Left outer join
+select * from indent I , section S
+where I.section_code = 
+
+-- 2. Right outer join
 
 
 
+-- 3. Right outer join
 
 -- }
 
