@@ -1,3 +1,0 @@
--- CONTRIBUTORS are WELCOME bros and sis  :)
-
-SUCK MY DICK MOTHERFUCKER
