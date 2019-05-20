@@ -1,59 +1,29 @@
-create table studio
+create table owner2
 (
-st_name varchar(20),
-branch varchar(20),
-location varchar(20),
-constraint pk22 primary key(st_name));
-create table movie1
-(
-sensor_no varchar(20),
-title varchar(20),
-year number(5),
-constraint pk23 primary key(sensor_no)
-);
-
-
-create table star
-(
-star_name varchar(20),
+ssn number(10),
+name varchar(20),
 address varchar(20),
-constraint pk24 primary key(star_name)
+constraint pk41 primary key(ssn)
 );
-create table owns
+create table car2
 (
-st_name varchar(20),
-sensor_no varchar(20),
-constraint pk25 primary key(st_name,sensor_no),
-constraint fk21 foreign key(st_name) references studio(st_name),
-constraint fk22 foreign key(sensor_no) references movie1(sensor_no)
+rgno number(10),
+model varchar(10),
+color varchar(10),
+ssn number(10),
+dop date,
+constraint pk42 primary key(rgno),
+constraint fk41 foreign key(ssn) references owner2(ssn)
 );
-create table acted_by
-(
-star_name varchar(20),
-sensor_no varchar(20),
-constraint pk26 primary key(star_name,sensor_no),
-constraint fk23 foreign key(star_name) references star(star_name),
-constraint fk24 foreign key(sensor_no) references movie1(sensor_no)
-);
-
-
-insert into studio values('&st_name','&branch','&location');
-insert into studio values('pixar','blore','dsds');
-insert into studio values('warnerbro','pune','wewew');
-insert into studio values('legendary','new york','szxzx');
-insert into movie1 values('&sensor_no','&title','&date');
-insert into movie1 values('s1111','xyz',2011);
-insert into movie1 values('s1112','dark knight',2009);
-insert into movie1 values('s1113','hurt locker',2009);
-insert into star values('&star_name','&address');
-insert into star values('heath ledger','california');
-insert into star values('caprio','LA');
-insert into star values('clooney','NY');
-insert into owns values('&st_name','&sensor_no');
-insert into owns values('legendary','s1112');
-insert into owns values('warnerbro','s1111');
-insert into owns values('pixar','s1113');
-insert into acted_by values('&star_name','&sensor_no');
-insert into acted_by values('heath ledger','s1112');
-insert into acted_by values('caprio','s1111');
-insert into acted_by values('clooney','s1113');
+b)
+insert into owner2 values(&ssn,'&name','&address');
+insert into owner2 values(4441,'josh','sfsdf');
+insert into owner2 values(4442,'john','sfsdf');
+insert into owner2 values(4443,'rose','sfsdf');
+insert into owner2 values(4444,'robert','sfsdf');
+insert into car2 values(&rgno,'&model','&color',&ssn,'&dop');
+insert into car2 values(55551,'dfdf','red',4441,'10-jan-2011');
+insert into car2 values(55552,'xcdf','black',4441,'11-nov-2011');
+insert into car2 values(55553,'dfdfcx','blue',4441,'10-dec-2011');
+insert into car2 values(55554,'asdfdf','white',4442,'10-jul-2011');
+insert into car2 values(55555,'dfasdf','black',4443,'14-feb-2011');
