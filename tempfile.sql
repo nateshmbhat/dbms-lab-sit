@@ -1,29 +1,51 @@
-create table owner2
+-- THIS IS A TEMPORARY FILE TO BE REFERENCED INSIDE SQL CLI AND IS NOT OF ANY VALUE TO THE REPO
+
+create table customer
 (
-ssn number(10),
-name varchar(20),
-address varchar(20),
-constraint pk41 primary key(ssn)
+c_id varchar(10),
+name varchar(10),
+constraint pk71 primary key(c_id)
 );
-create table car2
+create table account
 (
-rgno number(10),
-model varchar(10),
-color varchar(10),
-ssn number(10),
-dop date,
-constraint pk42 primary key(rgno),
-constraint fk41 foreign key(ssn) references owner2(ssn)
+acc_no number(10),
+type varchar(10),
+balance number(10),
+constraint pk72 primary key(acc_no)
+);
+create table cust_acc
+(
+c_id varchar(10),
+acc_no number(10),
+last_tr date,
+constraint pk73 primary key(c_id,acc_no),
+constraint fk71 foreign key(c_id) references customer(c_id),
+constraint fk72 foreign key(acc_no) references account(acc_no)
+);
+create table address
+(
+c_id varchar(10),
+street varchar(20),
+city varchar(20),
+state varchar(20),
+constraint pk74 primary key(c_id,street,city,state)
 );
 b)
-insert into owner2 values(&ssn,'&name','&address');
-insert into owner2 values(4441,'josh','sfsdf');
-insert into owner2 values(4442,'john','sfsdf');
-insert into owner2 values(4443,'rose','sfsdf');
-insert into owner2 values(4444,'robert','sfsdf');
-insert into car2 values(&rgno,'&model','&color',&ssn,'&dop');
-insert into car2 values(55551,'dfdf','red',4441,'10-jan-2011');
-insert into car2 values(55552,'xcdf','black',4441,'11-nov-2011');
-insert into car2 values(55553,'dfdfcx','blue',4441,'10-dec-2011');
-insert into car2 values(55554,'asdfdf','white',4442,'10-jul-2011');
-insert into car2 values(55555,'dfasdf','black',4443,'14-feb-2011');
+insert into customer values('&c_id','&name');
+insert into customer values('c1111','alex');
+insert into customer values('c1112','john');
+insert into customer values('c1113','steve');
+insert into customer values('c1114','robert');
+insert into account values(&acc_no,'&type','&balance');
+insert into account values(2001,'savings','8000');
+insert into account values(2002,'RD','9000');
+insert into account values(2003,'joint','20000');
+insert into cust_acc values('&c_id',&acc_no,'&last_tr');
+insert into cust_acc values('c1111',2003,'20-jan-2011');
+insert into cust_acc values('c1112',2003,'12-feb-2011');
+insert into cust_acc values('c1113',2003,'13-jan-2011');
+insert into cust_acc values('c1114',2003,'20-mar-2011');
+insert into cust_acc values('c1111',2001,'20-dec-2011');
+insert into address values('&c_id','&street','&city','&state');
+insert into address values('c1111','fsfsf','ccxx','&hghg');
+insert into address values('c1111','fsfcc','ccqwq','&hgcxhg');
